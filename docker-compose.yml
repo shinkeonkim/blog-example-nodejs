@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 1235:1235
+    environment:
+      TZ: Asia/Seoul
+    container_name: web
+    volumes:
+        - ./src:/usr/src/app/src
+    command: yarn pm2-runtime start ecosystem.config.js --only dev --watch
+  db:
+    image: mongo:4.4.1-bionic
+    container_name: db

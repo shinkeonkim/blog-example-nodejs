@@ -1,13 +1,26 @@
 {
+  "name": "blog-example-nodejs",
+  "version": "0.0.1",
+  "description": "blog example project",
+  "main": "index.ts",
+  "private": "false",
+  "author": "shinkeonkim",
+  "license": "MIT",
   "dependencies": {
     "@types/express": "^4.17.13",
     "@types/node": "^17.0.21",
+    "dotenv": "^16.0.0",
     "express": "^4.17.3",
-    "nodemon": "^2.0.15",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.2.8",
+    "pm2": "^5.2.0",
     "ts-node": "^10.7.0",
     "typescript": "^4.6.2"
   },
   "scripts": {
-    "start": "nodemon src/nodemon.json"
+    "postinstall": "$(yarn bin)/pm2 install typescript ts-node",
+    "dev": "yarn pm2 start ecosystem.config.js --only dev --watch",
+    "start": "yarn pm2 start ecosystem.config.js --only production --watch",
+    "del": "yarn pm2 del all"
   }
 }

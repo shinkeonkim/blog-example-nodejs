@@ -3,7 +3,7 @@ import router from './routes';
 
 const app: express.Application = express();
 
-const port = process.env.PORT || 1235;
+const port = process.env.PORT;
 
 app.use('/', router);
 
