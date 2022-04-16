@@ -1,8 +1,9 @@
 import { Router } from 'express';
-import { articles } from './article.controller';
+import { articleIndex, articleNew } from './article.controller';
 
 const router = Router();
 
-router.get('/', articles);
+router.get('/', articleIndex);
+router.post('/', articleNew);
 
 export default router;

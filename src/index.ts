@@ -6,6 +6,10 @@ const PORT = process.env.PORT;
 const app: express.Application = express();
 const db = require('./db');
 
+app.use(express.json());
+app.use(express.urlencoded({
+  extended: true
+}));
 
 app.use('/', router);
 
