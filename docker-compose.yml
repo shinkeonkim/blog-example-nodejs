@@ -6,13 +6,32 @@ services:
       context: .
       dockerfile: ./Dockerfile
     ports:
-      - 1235:1235
+      - ${PORT}:${PORT}
     environment:
+      PORT: ${PORT}
+      MONGODB_PORT: ${MONGODB_PORT} 
       TZ: Asia/Seoul
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
     container_name: web
     volumes:
         - ./src:/usr/src/app/src
     command: yarn pm2-runtime start ecosystem.config.js --only dev --watch
+    depends_on:
+      - db
+    restart: always
   db:
     image: mongo:4.4.1-bionic
     container_name: db
+    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+    ports:
+      - ${MONGODB_PORT}:${MONGODB_PORT}
+    volumes:
+      # -v 옵션 (다렉토리 마운트 설정)
+      - .mongodb/:/data/db
+    expose:
+      - ${MONGODB_PORT}
+

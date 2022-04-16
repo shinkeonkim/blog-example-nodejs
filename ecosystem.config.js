@@ -8,11 +8,6 @@ module.exports = {
     env: {
       PORT: 1235,
       NODE_ENV: 'development',
-      // MariaDB_HOST: "localhost",
-      // MariaDB_PORT:3306,
-      // MariaDB_USER:"root",
-      // MariaDB_PASSWORD:"",
-      // MariaDB_NAME:"DB-Name",
       // Redis_HOST: "localhost",
       // Redis_PORT: 6379
     },
@@ -26,11 +21,6 @@ module.exports = {
     env: {
       PORT: 1235,
       NODE_ENV: 'production',
-      // MariaDB_HOST: "localhost",
-      // MariaDB_PORT:3306,
-      // MariaDB_USER:"root",
-      // MariaDB_PASSWORD:"",
-      // MariaDB_NAME:"DB-Name",
       // Redis_HOST: "localhost",
       // Redis_PORT: 6379
     },

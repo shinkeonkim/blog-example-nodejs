@@ -1,12 +1,17 @@
 import express from 'express';
 import router from './routes';
 
-const app: express.Application = express();
+const PORT = process.env.PORT;
 
-const port = process.env.PORT;
+const app: express.Application = express();
+const db = require('./db');
+
 
 app.use('/', router);
 
-const server = app.listen(port, () => {
-  console.log(`server is listening at localhost:${port}`);
+db();
+
+const server = app.listen(PORT, () => {
+  console.log(`server is listening at localhost:${PORT}`);
 });
+
